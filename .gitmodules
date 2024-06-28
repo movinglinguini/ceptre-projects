@@ -1,0 +1,3 @@
+[submodule "ceptre"]
+	path = ceptre
+	url = git@github.com:chrisamaphone/interactive-lp.git
