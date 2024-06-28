@@ -1,0 +1,5 @@
+{"command": {"rulename": "release", "args": ["voltmeter", "hoozawhatsie"]},
+ "removed": [{"varname": "x37", "mode": "lin", "pred": "committed", "args": ["voltmeter", "hoozawhatsie"]}],
+ "added": [{"varname": "x39", "mode": "lin", "pred": "availableR", "args": ["voltmeter"]}],
+ "context": ["(availableR voltmeter)", "(availableR charger)", "(requires socket voltmeter)", "(requires plug voltmeter)", "(requires doodad voltmeter)", "(requires sprocket charger)", "(requires frob charger)", "(availableA hoozawhatsie)", "(availableA unit)", "(availableA mount)", "(availableA contraption)", "(availableA hack)", "(availableA connector)", "(availableA gimcrack)", "(availableA wire)", "(availableA tube)", "(availableA widget)", "(availableA fastener)", "(availableA device)", "(availableA valve)", "(assem unit)", "(assem mount)", "(assem contraption)", "(assem hack)", "(assem connector)", "(assem gimcrack)", "(assem tube)", "(assem widget)", "(assem fastener)", "(assem device)", "(stage plan)"]
+}

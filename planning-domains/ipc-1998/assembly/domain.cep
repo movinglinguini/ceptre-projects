@@ -1,0 +1,127 @@
+%%%%%%%%%%%%
+% Assembly domain based on the `assembly` example from IPC 1998.
+
+assembly : type.
+resource : type.
+
+%%%%%
+% PREDICATES
+%%%%%
+
+% We have to make two different predicates.
+% In PDDL, subtyping is supported. Not sure if it is supported
+% in Ceptre. In the PDDL domain, `resource` and `assembly` are
+% subtypes of `object`, a base type.
+
+availableR resource : pred.
+availableA assembly : pred.
+
+complete assembly : pred.
+requires assembly resource : pred.
+committed resource assembly : pred.
+incorporated assembly assembly : pred.
+part-of assembly assembly : pred.
+assemble-order assembly assembly assembly : pred.
+transient-part assembly assembly : pred.
+remove-order assembly assembly assembly : pred.
+
+% These are extra predicates that need to be added.
+% In PDDL, ground terms are themselves nullary predicates,
+% whereas here, they are not.
+is-assembly assembly : pred.
+
+%%%%%%
+% ACTIONS
+%%%%%%
+stage plan {
+  commit : !is-assembly A * availableR R -o committed R A.
+  release : committed R A -o availableR R.
+
+  % The assemble rule has two implications and a disjunction (making for 3 total disjunctions)
+  % in its preconds. To make an equivalent set of actions here, each case needs to be
+  % considered.
+
+  % Assemble: 
+  %     (forall Res : resource . requires Whole Res => committed Res Whole) 
+  %  /\ (part-of Part Whole \/ transient-part Part Whole) 
+  %  /\ available Part 
+  %  /\ (forall Prev : assembly . assemble-order Prev Part Whole => incorporated Prev Whole)
+  %  ===
+  %     not(requires Whole Res) \/ committed Res Whole
+  %  /\ (part-of Part Whole \/ transient-part Part Whole)
+  %  /\ available Part 
+  %  /\ not(assemble-order Prev Part Whole) \/ incorporated Prev Whole
+
+  assemble1 : committed Res Whole * part-of Part Whole * availableA Part * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble2 : committed Res Whole * part-of Part Whole * availableA Part * assemble-order Prev Part Whole * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble3 : committed Res Whole * part-of Part Whole * availableA Part -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble4 : committed Res Whole * transient-part Part Whole * availableA Part * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble5 : committed Res Whole * transient-part Part Whole * availableA Part * assemble-order Prev Part Whole * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble6 : committed Res Whole * transient-part Part Whole * availableA Part -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble7 : requires Whole Res * committed Res Whole * part-of Part Whole * availableA Part * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble8 : requires Whole Res * committed Res Whole * part-of Part Whole * availableA Part * assemble-order Prev Part Whole * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble9 : requires Whole Res * committed Res Whole * part-of Part Whole * availableA Part -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble9 : requires Whole Res * committed Res Whole * transient-part Part Whole * availableA Part * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble10 : requires Whole Res * committed Res Whole * transient-part Part Whole * availableA Part * assemble-order Prev Part Whole * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble11 : requires Whole Res * committed Res Whole * transient-part Part Whole * availableA Part -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble12 : part-of Part Whole * availableA Part * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble13 : part-of Part Whole * availableA Part * assemble-order Prev Part Whole * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble14 : part-of Part Whole * availableA Part -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble15 : transient-part Part Whole * availableA Part * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble16 : transient-part Part Whole * availableA Part * assemble-order Prev Part Whole * incorporated Prev Whole -o incorporated Part Whole * complete Whole * availableA Whole.
+  assemble17 : transient-part Part Whole * availableA Part -o incorporated Part Whole * complete Whole * availableA Whole.
+}
+
+#interactive plan.
+
+bracket : assembly.
+valve : assembly.
+device : assembly.
+frob : assembly.
+fastener : assembly.
+widget : assembly.
+tube : assembly.
+sprocket : assembly.
+wire : assembly.
+doodad : assembly.
+gimcrack : assembly.
+connector : assembly.
+hack : assembly.
+plug : assembly.
+contraption : assembly.
+mount : assembly.
+socket : assembly.
+unit : assembly.
+hoozawhatsie : assembly.
+
+charger : resource.
+voltmeter : resource.
+
+context init = 
+{ 
+  is-assembly bracket,
+
+  availableA valve,
+  availableA device,
+  availableA fastener,
+  availableA widget,
+  availableA tube,
+  availableA wire,
+  availableA gimcrack,
+  availableA connector,
+  availableA hack,
+  availableA contraption,
+  availableA mount,
+  availableA unit,
+  availableA hoozawhatsie,
+  availableR charger,
+  availableR voltmeter,
+  
+  requires frob charger,
+  requires sprocket charger,
+  requires doodad voltmeter,
+  requires plug voltmeter,
+  requires socket voltmeter
+}
+
+#trace _ plan init.

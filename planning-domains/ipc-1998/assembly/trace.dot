@@ -1,0 +1,23 @@
+digraph {
+x20 [style=filled,fillcolor=skyblue,label="(requires socket voltmeter)"];
+x19 [style=filled,fillcolor=skyblue,label="(requires plug voltmeter)"];
+x18 [style=filled,fillcolor=skyblue,label="(requires doodad voltmeter)"];
+x17 [style=filled,fillcolor=skyblue,label="(requires sprocket charger)"];
+x16 [style=filled,fillcolor=skyblue,label="(requires frob charger)"];
+x15 [style=filled,fillcolor=skyblue,label="(availableR voltmeter)"];
+x14 [style=filled,fillcolor=skyblue,label="(availableR charger)"];
+x13 [style=filled,fillcolor=skyblue,label="(availableA hoozawhatsie)"];
+x12 [style=filled,fillcolor=skyblue,label="(availableA unit)"];
+x11 [style=filled,fillcolor=skyblue,label="(availableA mount)"];
+x10 [style=filled,fillcolor=skyblue,label="(availableA contraption)"];
+x9 [style=filled,fillcolor=skyblue,label="(availableA hack)"];
+x8 [style=filled,fillcolor=skyblue,label="(availableA connector)"];
+x7 [style=filled,fillcolor=skyblue,label="(availableA gimcrack)"];
+x6 [style=filled,fillcolor=skyblue,label="(availableA wire)"];
+x5 [style=filled,fillcolor=skyblue,label="(availableA tube)"];
+x4 [style=filled,fillcolor=skyblue,label="(availableA widget)"];
+x3 [style=filled,fillcolor=skyblue,label="(availableA fastener)"];
+x2 [style=filled,fillcolor=skyblue,label="(availableA device)"];
+x1 [style=filled,fillcolor=skyblue,label="(availableA valve)"];
+x0 [style=filled,fillcolor=skyblue,label="(stage plan)"];
+}
