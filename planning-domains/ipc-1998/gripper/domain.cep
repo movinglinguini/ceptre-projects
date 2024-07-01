@@ -1,0 +1,62 @@
+%%%%%%%%%%%%
+% Gripper-STRIPS domain based on the `gripper` example from IPC 1998.
+%
+obj : type.
+
+room obj : pred.
+ball obj : pred.
+gripper obj : pred.
+at-robby obj : pred.
+at obj obj : pred.
+free obj : pred.
+carry obj obj : pred.
+
+rooma : obj.
+roomb : obj.
+
+ball1 : obj.
+ball2 : obj.
+ball3 : obj.
+ball4 : obj.
+
+left : obj.
+right : obj.
+
+stage plan {
+  move : room To * room From * at-robby From -o at-robby To * room To * room From.
+  pick : ball Obj * room Room * gripper Gripper * at-robby Room * at Obj Room * free Gripper -o carry Obj Gripper * ball Obj * room Room * gripper Gripper * at-robby Room.
+  drop : ball Obj * room Room * gripper Gripper * at-robby Room * carry Obj Gripper -o at Obj Room * free Gripper * at-robby Room * gripper Gripper * room Room * ball Obj.
+}
+
+#interactive plan.
+
+stage goal {
+  finish : at ball4 roomb * at ball3 roomb * at ball2 roomb * at ball1 roomb -o ().
+}
+#interactive goal.
+
+context init = {
+  room rooma,
+  room roomb,
+
+  ball ball4,
+  ball ball3,
+  ball ball2,
+  ball ball1,
+
+  at-robby rooma,
+
+  free left,
+  free right,
+
+  at ball4 rooma,
+  at ball3 rooma,
+  at ball2 rooma,
+  at ball1 rooma,
+
+  gripper left,
+  gripper right
+}
+
+#trace _ plan init.
+

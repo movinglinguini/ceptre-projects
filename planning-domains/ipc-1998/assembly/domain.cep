@@ -1,5 +1,6 @@
 %%%%%%%%%%%%
 % Assembly domain based on the `assembly` example from IPC 1998.
+% Note: INCOMPLETE CODE
 
 assembly : type.
 resource : type.
