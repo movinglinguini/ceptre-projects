@@ -1,7 +1,15 @@
 %%%%%%%%%%%%
 % Gripper-STRIPS domain based on the `gripper` example from IPC 1998.
-%
+% https://ipc98.icaps-conference.org/
+% The goal and grounded predicates are from problem #1.
+
+
+% All objects have a default "object" type according to the PDDL manual.
 obj : type.
+
+%%%%%%%
+% Predicates
+%%%%%%%
 
 room obj : pred.
 ball obj : pred.
@@ -10,6 +18,10 @@ at-robby obj : pred.
 at obj obj : pred.
 free obj : pred.
 carry obj obj : pred.
+
+%%%
+% Objects
+%%%
 
 rooma : obj.
 roomb : obj.
@@ -26,14 +38,14 @@ stage plan {
   move : room To * room From * at-robby From -o at-robby To * room To * room From.
   pick : ball Obj * room Room * gripper Gripper * at-robby Room * at Obj Room * free Gripper -o carry Obj Gripper * ball Obj * room Room * gripper Gripper * at-robby Room.
   drop : ball Obj * room Room * gripper Gripper * at-robby Room * carry Obj Gripper -o at Obj Room * free Gripper * at-robby Room * gripper Gripper * room Room * ball Obj.
-}
 
+  % This action is not in the original file. Just added for demonstration purposes.
+  % Terminates the program if selected. Represents reaching the goal state for problem #1.
+  reach-goal : at ball1 roomb * at ball2 roomb * at ball3 roomb * at ball4 roomb * at-robby Room -o ().
+}
 #interactive plan.
 
-stage goal {
-  finish : at ball4 roomb * at ball3 roomb * at ball2 roomb * at ball1 roomb -o ().
-}
-#interactive goal.
+% Initialize ground terms
 
 context init = {
   room rooma,

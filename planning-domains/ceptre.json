@@ -1,5 +1,5 @@
-{"command": {"rulename": "drop", "args": ["ball3", "roomb", "left"]},
- "removed": [{"varname": "x90", "mode": "lin", "pred": "at-robby", "args": ["roomb"]}, {"varname": "x89", "mode": "lin", "pred": "gripper", "args": ["left"]}, {"varname": "x88", "mode": "lin", "pred": "room", "args": ["roomb"]}, {"varname": "x87", "mode": "lin", "pred": "ball", "args": ["ball3"]}, {"varname": "x86", "mode": "lin", "pred": "carry", "args": ["ball3", "left"]}],
- "added": [{"varname": "x96", "mode": "lin", "pred": "ball", "args": ["ball3"]}, {"varname": "x95", "mode": "lin", "pred": "room", "args": ["roomb"]}, {"varname": "x94", "mode": "lin", "pred": "gripper", "args": ["left"]}, {"varname": "x93", "mode": "lin", "pred": "at-robby", "args": ["roomb"]}, {"varname": "x92", "mode": "lin", "pred": "free", "args": ["left"]}, {"varname": "x91", "mode": "lin", "pred": "at", "args": ["ball3", "roomb"]}],
- "context": ["(ball ball3)", "(room roomb)", "(gripper left)", "(at-robby roomb)", "(free left)", "(at ball3 roomb)", "(room rooma)", "(ball ball1)", "(gripper right)", "(free right)", "(at ball1 roomb)", "(ball ball4)", "(at ball4 roomb)", "(ball ball2)", "(at ball2 roomb)", "(stage plan)"]
+{"command": {"rulename": "finish", "args": ["roomb"]},
+ "removed": [{"varname": "x1179", "mode": "lin", "pred": "at-robby", "args": ["roomb"]}, {"varname": "x1177", "mode": "lin", "pred": "at", "args": ["ball4", "roomb"]}, {"varname": "x1171", "mode": "lin", "pred": "at", "args": ["ball3", "roomb"]}, {"varname": "x1143", "mode": "lin", "pred": "at", "args": ["ball2", "roomb"]}, {"varname": "x1054", "mode": "lin", "pred": "at", "args": ["ball1", "roomb"]}],
+ "added": [],
+ "context": ["(ball ball4)", "(room roomb)", "(gripper left)", "(free left)", "(ball ball3)", "(gripper right)", "(free right)", "(room rooma)", "(ball ball2)", "(ball ball1)", "(stage plan)"]
 }
