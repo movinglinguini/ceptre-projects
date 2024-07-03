@@ -1,0 +1,36 @@
+--- STEP:    pick ball4 rooma left
+    REMOVED: {(gripper left true), (at ball4 rooma true), (free left true), (at-robby rooma true), (ball ball4 true), (room rooma true)}
+    ADDED:   {(at-robby rooma true), (gripper left true), (room rooma true), (ball ball4 true), (at ball4 rooma false), (free left false), (carry ball4 left true)}
+--- STEP:    pick ball3 rooma right
+    REMOVED: {(at-robby rooma true), (room rooma true), (gripper right true), (at ball3 rooma true), (free right true), (ball ball3 true)}
+    ADDED:   {(at-robby rooma true), (gripper right true), (room rooma true), (ball ball3 true), (at ball3 rooma false), (free right false), (carry ball3 right true)}
+--- STEP:    move roomb rooma
+    REMOVED: {(at-robby rooma true), (room rooma true), (room roomb true)}
+    ADDED:   {(room rooma true), (room roomb true), (at-robby rooma false), (at-robby roomb true)}
+--- STEP:    drop ball4 roomb left
+    REMOVED: {(room roomb true), (at-robby roomb true), (gripper left true), (ball ball4 true), (carry ball4 left true)}
+    ADDED:   {(ball ball4 true), (room roomb true), (gripper left true), (at-robby roomb true), (free left true), (at ball4 roomb true)}
+--- STEP:    drop ball3 roomb right
+    REMOVED: {(room roomb true), (at-robby roomb true), (gripper right true), (ball ball3 true), (carry ball3 right true)}
+    ADDED:   {(ball ball3 true), (room roomb true), (gripper right true), (at-robby roomb true), (free right true), (at ball3 roomb true)}
+--- STEP:    move rooma roomb
+    REMOVED: {(room roomb true), (at-robby roomb true), (room rooma true)}
+    ADDED:   {(room roomb true), (room rooma true), (at-robby roomb false), (at-robby rooma true)}
+--- STEP:    pick ball2 rooma left
+    REMOVED: {(room rooma true), (at-robby rooma true), (gripper left true), (free left true), (at ball2 rooma true), (ball ball2 true)}
+    ADDED:   {(at-robby rooma true), (gripper left true), (room rooma true), (ball ball2 true), (at ball2 rooma false), (free left false), (carry ball2 left true)}
+--- STEP:    pick ball1 rooma right
+    REMOVED: {(at-robby rooma true), (room rooma true), (gripper right true), (free right true), (at ball1 rooma true), (ball ball1 true)}
+    ADDED:   {(at-robby rooma true), (gripper right true), (room rooma true), (ball ball1 true), (at ball1 rooma false), (free right false), (carry ball1 right true)}
+--- STEP:    move roomb rooma
+    REMOVED: {(at-robby rooma true), (room rooma true), (room roomb true)}
+    ADDED:   {(room rooma true), (room roomb true), (at-robby rooma false), (at-robby roomb true)}
+--- STEP:    drop ball2 roomb left
+    REMOVED: {(room roomb true), (at-robby roomb true), (gripper left true), (ball ball2 true), (carry ball2 left true)}
+    ADDED:   {(ball ball2 true), (room roomb true), (gripper left true), (at-robby roomb true), (free left true), (at ball2 roomb true)}
+--- STEP:    drop ball1 roomb right
+    REMOVED: {(room roomb true), (at-robby roomb true), (gripper right true), (ball ball1 true), (carry ball1 right true)}
+    ADDED:   {(ball ball1 true), (room roomb true), (gripper right true), (at-robby roomb true), (free right true), (at ball1 roomb true)}
+--- STEP:    reach-goal roomb
+    REMOVED: {(at-robby roomb true), (at ball1 roomb true), (at ball2 roomb true), (at ball3 roomb true), (at ball4 roomb true)}
+    ADDED:   {}

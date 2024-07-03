@@ -7,17 +7,19 @@
 % All objects have a default "object" type according to the PDDL manual.
 obj : type.
 
+bool : type.
+
 %%%%%%%
 % Predicates
 %%%%%%%
 
-room obj : pred.
-ball obj : pred.
-gripper obj : pred.
-at-robby obj : pred.
-at obj obj : pred.
-free obj : pred.
-carry obj obj : pred.
+room obj bool : pred.
+ball obj bool : pred.
+gripper obj bool : pred.
+at-robby obj bool : pred.
+at obj obj bool : pred.
+free obj bool : pred.
+carry obj obj bool : pred.
 
 %%%
 % Objects
@@ -34,40 +36,43 @@ ball4 : obj.
 left : obj.
 right : obj.
 
+true : bool.
+false : bool.
+
 stage plan {
-  move : room To * room From * at-robby From -o at-robby To * room To * room From.
-  pick : ball Obj * room Room * gripper Gripper * at-robby Room * at Obj Room * free Gripper -o carry Obj Gripper * ball Obj * room Room * gripper Gripper * at-robby Room.
-  drop : ball Obj * room Room * gripper Gripper * at-robby Room * carry Obj Gripper -o at Obj Room * free Gripper * at-robby Room * gripper Gripper * room Room * ball Obj.
+  move : room To true * room From true * at-robby From true -o at-robby To true * at-robby From false * room To true * room From true.
+  pick : ball Obj true * room Room true * gripper Gripper true * at-robby Room true * at Obj Room true * free Gripper true -o carry Obj Gripper true * free Gripper false * at Obj Room false * ball Obj true * room Room true * gripper Gripper true * at-robby Room true.
+  drop : ball Obj true * room Room true * gripper Gripper true * at-robby Room true * carry Obj Gripper true -o at Obj Room true * free Gripper true * at-robby Room true * gripper Gripper true * room Room true * ball Obj true.
 
   % This action is not in the original file. Just added for demonstration purposes.
   % Terminates the program if selected. Represents reaching the goal state for problem #1.
-  reach-goal : at ball1 roomb * at ball2 roomb * at ball3 roomb * at ball4 roomb * at-robby Room -o ().
+  reach-goal : at ball1 roomb true * at ball2 roomb true * at ball3 roomb true * at ball4 roomb true * at-robby Room true -o ().
 }
 #interactive plan.
 
 % Initialize ground terms
 
 context init = {
-  room rooma,
-  room roomb,
+  room rooma true,
+  room roomb true,
 
-  ball ball4,
-  ball ball3,
-  ball ball2,
-  ball ball1,
+  ball ball4 true,
+  ball ball3 true,
+  ball ball2 true,
+  ball ball1 true,
 
-  at-robby rooma,
+  at-robby rooma true,
 
-  free left,
-  free right,
+  free left true,
+  free right true,
 
-  at ball4 rooma,
-  at ball3 rooma,
-  at ball2 rooma,
-  at ball1 rooma,
+  at ball4 rooma true,
+  at ball3 rooma true,
+  at ball2 rooma true,
+  at ball1 rooma true,
 
-  gripper left,
-  gripper right
+  gripper left true,
+  gripper right true
 }
 
 #trace _ plan init.

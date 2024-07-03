@@ -1,0 +1,5 @@
+{"command": {"rulename": "reach-goal", "args": ["roomb"]},
+ "removed": [{"varname": "x76", "mode": "lin", "pred": "at-robby", "args": ["roomb", "true"]}, {"varname": "x74", "mode": "lin", "pred": "at", "args": ["ball1", "roomb", "true"]}, {"varname": "x68", "mode": "lin", "pred": "at", "args": ["ball2", "roomb", "true"]}, {"varname": "x40", "mode": "lin", "pred": "at", "args": ["ball3", "roomb", "true"]}, {"varname": "x34", "mode": "lin", "pred": "at", "args": ["ball4", "roomb", "true"]}],
+ "added": [],
+ "context": ["(ball ball1 true)", "(room roomb true)", "(gripper right true)", "(free right true)", "(ball ball2 true)", "(gripper left true)", "(free left true)", "(room rooma true)", "(at-robby rooma false)", "(at ball1 rooma false)", "(free right false)", "(at ball2 rooma false)", "(free left false)", "(at-robby roomb false)", "(ball ball3 true)", "(ball ball4 true)", "(at-robby rooma false)", "(at ball3 rooma false)", "(free right false)", "(at ball4 rooma false)", "(free left false)", "(stage plan)"]
+}
